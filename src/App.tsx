@@ -14,36 +14,43 @@ import { DownloadIcon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import "./App.css"
 
+const defaultAppData: AppData = {
+  candidate: {
+    name: "",
+    email: "",
+    phone: "",
+    headline: "",
+    location: "",
+    photo: {
+      dataUrl: "",
+      include: false,
+    },
+    skillGroups: [],
+    summary: "",
+    includeSummary: true,
+    includeEducation: true,
+    links: [],
+    experience: [],
+    education: [],
+  }
+}
+
 function App() {
-  const [data, setData] = useState<AppData>(loadStoredAppData)
-  const [isPrinting, setIsPrinting] = useState(false)
+
+  const [data, setData] = useState<AppData>(() => {
+    return loadStoredAppData() ?? defaultAppData
+  })
 
   useEffect(() => {
     saveAppData(data)
   }, [data])
 
-  /*  useEffect(() => {
-     if (isPrinting) {
-       document.body.dataset.printTarget = "resume"
-     } else {
-       delete document.body.dataset.printTarget
-     }
- 
-     const clearPrintTarget = () => setIsPrinting(false)
-     window.addEventListener("afterprint", clearPrintTarget)
- 
-     return () => {
-       window.removeEventListener("afterprint", clearPrintTarget)
-       delete document.body.dataset.printTarget
-     }
-   }, [isPrinting]) */
 
   const printPreview = () => {
     const originalTitle = document.title
     const candidateName = data.candidate.name || "Resume"
 
     document.title = `${candidateName} Resume`
-    setIsPrinting(true)
     window.setTimeout(() => window.print(), 50)
     window.addEventListener(
       "afterprint",

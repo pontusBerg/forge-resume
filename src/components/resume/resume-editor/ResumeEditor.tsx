@@ -104,7 +104,6 @@ export function ResumeEditor({ candidate, onChange }: ResumeEditorProps) {
           endDate: "",
           current: false,
           bullets: [""],
-          keywords: [],
         },
       ],
     })
