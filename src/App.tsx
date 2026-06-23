@@ -16,34 +16,16 @@ import "./App.css"
 
 function App() {
   const [data, setData] = useState<AppData>(loadStoredAppData)
-  const [isPrinting, setIsPrinting] = useState(false)
-
   useEffect(() => {
     saveAppData(data)
   }, [data])
 
-  /*  useEffect(() => {
-     if (isPrinting) {
-       document.body.dataset.printTarget = "resume"
-     } else {
-       delete document.body.dataset.printTarget
-     }
- 
-     const clearPrintTarget = () => setIsPrinting(false)
-     window.addEventListener("afterprint", clearPrintTarget)
- 
-     return () => {
-       window.removeEventListener("afterprint", clearPrintTarget)
-       delete document.body.dataset.printTarget
-     }
-   }, [isPrinting]) */
 
   const printPreview = () => {
     const originalTitle = document.title
     const candidateName = data.candidate.name || "Resume"
 
     document.title = `${candidateName} Resume`
-    setIsPrinting(true)
     window.setTimeout(() => window.print(), 50)
     window.addEventListener(
       "afterprint",
