@@ -1,22 +1,22 @@
-import type { JobTarget } from "@/lib/resume-types"
+import type { JobTarget } from "@/lib/resume-types";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { FormField } from "@/components/resume/FormField"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { FormField } from "@/components/resume/FormField";
 
 type JobTargetEditorProps = {
-  jobTarget: JobTarget
-  onChange: (jobTarget: JobTarget) => void
-}
+  jobTarget: JobTarget;
+  onChange: (jobTarget: JobTarget) => void;
+};
 
 export function JobTargetEditor({ jobTarget, onChange }: JobTargetEditorProps) {
   const updateField = (field: keyof JobTarget, value: string) => {
     onChange({
       ...jobTarget,
       [field]: value,
-    })
-  }
+    });
+  };
 
   return (
     <Card>
@@ -78,5 +78,5 @@ export function JobTargetEditor({ jobTarget, onChange }: JobTargetEditorProps) {
         </FormField>
       </CardContent>
     </Card>
-  )
+  );
 }

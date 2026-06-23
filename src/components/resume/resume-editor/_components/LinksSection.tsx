@@ -1,16 +1,16 @@
-import type { ResumeLink } from "@/lib/resume-types"
+import type { ResumeLink } from "@/lib/resume-types";
 
-import { FormField } from "@/components/resume/FormField"
-import { SectionTitle } from "@/components/resume/SectionTitle"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { FormField } from "@/components/resume/FormField";
+import { SectionTitle } from "@/components/resume/SectionTitle";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 type LinksSectionProps = {
-  links: ResumeLink[]
-  onLinkChange: (linkId: string, nextLink: ResumeLink) => void
-  onAddLink: () => void
-  onRemoveLink: (linkId: string) => void
-}
+  links: ResumeLink[];
+  onLinkChange: (linkId: string, nextLink: ResumeLink) => void;
+  onAddLink: () => void;
+  onRemoveLink: (linkId: string) => void;
+};
 
 export function LinksSection({ links, onLinkChange, onAddLink, onRemoveLink }: LinksSectionProps) {
   return (
@@ -58,5 +58,5 @@ export function LinksSection({ links, onLinkChange, onAddLink, onRemoveLink }: L
         </Button>
       </div>
     </section>
-  )
+  );
 }

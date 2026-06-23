@@ -1,49 +1,49 @@
-import { useRef, type ChangeEvent } from "react"
+import { useRef, type ChangeEvent } from "react";
 
-import type { CandidateProfile } from "@/lib/resume-types"
+import type { CandidateProfile } from "@/lib/resume-types";
 
-import { FormField } from "@/components/resume/FormField"
-import { SectionTitle } from "@/components/resume/SectionTitle"
-import { Button } from "@/components/ui/button"
-import { Trash, UploadIcon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { FormField } from "@/components/resume/FormField";
+import { SectionTitle } from "@/components/resume/SectionTitle";
+import { Button } from "@/components/ui/button";
+import { Trash, UploadIcon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 type ProfileImageSectionProps = {
-  name: string
-  photo: CandidateProfile["photo"]
-  onPhotoChange: (photo: CandidateProfile["photo"]) => void
-}
+  name: string;
+  photo: CandidateProfile["photo"];
+  onPhotoChange: (photo: CandidateProfile["photo"]) => void;
+};
 
 export function ProfileImageSection({ name, photo, onPhotoChange }: ProfileImageSectionProps) {
-  const photoUploadInputRef = useRef<HTMLInputElement>(null)
+  const photoUploadInputRef = useRef<HTMLInputElement>(null);
 
   const handlePhotoUpload = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
+    const file = event.target.files?.[0];
 
     if (!file) {
-      return
+      return;
     }
 
-    const reader = new FileReader()
+    const reader = new FileReader();
     reader.onload = () => {
       if (typeof reader.result !== "string") {
-        return
+        return;
       }
 
       onPhotoChange({
         dataUrl: reader.result,
         include: true,
-      })
-    }
-    reader.readAsDataURL(file)
-  }
+      });
+    };
+    reader.readAsDataURL(file);
+  };
 
   const removePhoto = () => {
     onPhotoChange({
       dataUrl: "",
       include: false,
-    })
-  }
+    });
+  };
 
   return (
     <section className="grid gap-5">
@@ -92,5 +92,5 @@ export function ProfileImageSection({ name, photo, onPhotoChange }: ProfileImage
         </div>
       </FormField>
     </section>
-  )
+  );
 }

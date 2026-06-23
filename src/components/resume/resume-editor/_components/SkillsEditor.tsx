@@ -1,30 +1,30 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import type { SkillGroup } from "@/lib/resume-types"
+import type { SkillGroup } from "@/lib/resume-types";
 
-import { FormField } from "@/components/resume/FormField"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { FormField } from "@/components/resume/FormField";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
-import { splitCommaList } from "./utils"
+import { splitCommaList } from "./utils";
 
 type SkillsEditorProps = {
-  group: SkillGroup
-  onChange: (group: SkillGroup) => void
-  onRemove: () => void
-}
+  group: SkillGroup;
+  onChange: (group: SkillGroup) => void;
+  onRemove: () => void;
+};
 
 export function SkillsEditor({ group, onChange, onRemove }: SkillsEditorProps) {
-  const [skillsDraft, setSkillsDraft] = useState(() => group.skills.join(", "))
+  const [skillsDraft, setSkillsDraft] = useState(() => group.skills.join(", "));
 
   const updateSkills = (value: string) => {
-    setSkillsDraft(value)
+    setSkillsDraft(value);
     onChange({
       ...group,
       skills: splitCommaList(value),
-    })
-  }
+    });
+  };
 
   return (
     <section className="grid gap-4">
@@ -54,5 +54,5 @@ export function SkillsEditor({ group, onChange, onRemove }: SkillsEditorProps) {
         />
       </FormField>
     </section>
-  )
+  );
 }

@@ -1,16 +1,16 @@
-import type { Experience } from "@/lib/resume-types"
+import type { Experience } from "@/lib/resume-types";
 
-import { SectionTitle } from "@/components/resume/SectionTitle"
-import { Button } from "@/components/ui/button"
+import { SectionTitle } from "@/components/resume/SectionTitle";
+import { Button } from "@/components/ui/button";
 
-import { ExperienceEditor } from "./ExperienceEditor"
+import { ExperienceEditor } from "./ExperienceEditor";
 
 type ExperienceSectionProps = {
-  experience: Experience[]
-  onExperienceChange: (experienceId: string, nextExperience: Experience) => void
-  onAddExperience: () => void
-  onRemoveExperience: (experienceId: string) => void
-}
+  experience: Experience[];
+  onExperienceChange: (experienceId: string, nextExperience: Experience) => void;
+  onAddExperience: () => void;
+  onRemoveExperience: (experienceId: string) => void;
+};
 
 export function ExperienceSection({
   experience,
@@ -35,5 +35,5 @@ export function ExperienceSection({
         </Button>
       </div>
     </section>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import type { AppData, CandidateProfile } from "@/lib/resume-types"
+import type { AppData, CandidateProfile } from "@/lib/resume-types";
 
 export const sampleCandidate: CandidateProfile = {
   name: "Jordan Lee",
@@ -84,12 +84,11 @@ export const sampleCandidate: CandidateProfile = {
       skills: ["Testing Library", "Playwright", "Performance profiling", "Code review"],
     },
   ],
-}
-
+};
 
 export const sampleAppData: AppData = {
   candidate: sampleCandidate,
-}
+};
 
 export function createEmptyAppData(): AppData {
   return {
@@ -111,5 +110,5 @@ export function createEmptyAppData(): AppData {
       education: [],
       skillGroups: [],
     },
-  }
+  };
 }

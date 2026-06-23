@@ -1,16 +1,16 @@
-import type { SkillGroup } from "@/lib/resume-types"
+import type { SkillGroup } from "@/lib/resume-types";
 
-import { SectionTitle } from "@/components/resume/SectionTitle"
-import { Button } from "@/components/ui/button"
+import { SectionTitle } from "@/components/resume/SectionTitle";
+import { Button } from "@/components/ui/button";
 
-import { SkillsEditor } from "./SkillsEditor"
+import { SkillsEditor } from "./SkillsEditor";
 
 type SkillsSectionProps = {
-  skillGroups: SkillGroup[]
-  onSkillGroupChange: (groupId: string, nextGroup: SkillGroup) => void
-  onAddSkillGroup: () => void
-  onRemoveSkillGroup: (groupId: string) => void
-}
+  skillGroups: SkillGroup[];
+  onSkillGroupChange: (groupId: string, nextGroup: SkillGroup) => void;
+  onAddSkillGroup: () => void;
+  onRemoveSkillGroup: (groupId: string) => void;
+};
 
 export function SkillsSection({
   skillGroups,
@@ -35,5 +35,5 @@ export function SkillsSection({
         </Button>
       </div>
     </section>
-  )
+  );
 }

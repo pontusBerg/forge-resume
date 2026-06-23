@@ -1,15 +1,15 @@
-import { FormField } from "@/components/resume/FormField"
-import { SectionTitle } from "@/components/resume/SectionTitle"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
+import { FormField } from "@/components/resume/FormField";
+import { SectionTitle } from "@/components/resume/SectionTitle";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 type SummarySectionProps = {
-  summary: string
-  includeSummary: boolean
-  onSummaryChange: (summary: string) => void
-  onIncludeSummaryChange: (includeSummary: boolean) => void
-}
+  summary: string;
+  includeSummary: boolean;
+  onSummaryChange: (summary: string) => void;
+  onIncludeSummaryChange: (includeSummary: boolean) => void;
+};
 
 export function SummarySection({
   summary,
@@ -38,5 +38,5 @@ export function SummarySection({
         </Label>
       </div>
     </section>
-  )
+  );
 }

@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-import { ResumeEditor } from "@/components/resume/resume-editor/ResumeEditor"
-import { ResumePreview } from "@/components/resume/ResumePreview"
-import { ResumeUploadButton } from "@/components/resume/ResumeUploadButton"
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardHeader
-} from "@/components/ui/card"
-import type { AppData } from "@/lib/resume-types"
-import { loadStoredAppData, saveAppData } from "@/lib/storage"
-import { DownloadIcon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
-import "./App.css"
+import { ResumeEditor } from "@/components/resume/resume-editor/ResumeEditor";
+import { ResumePreview } from "@/components/resume/ResumePreview";
+import { ResumeUploadButton } from "@/components/resume/ResumeUploadButton";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader } from "@/components/ui/card";
+import type { AppData } from "@/lib/resume-types";
+import { loadStoredAppData, saveAppData } from "@/lib/storage";
+import { DownloadIcon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import "./App.css";
 
 const defaultAppData: AppData = {
   candidate: {
@@ -32,34 +29,32 @@ const defaultAppData: AppData = {
     links: [],
     experience: [],
     education: [],
-  }
-}
+  },
+};
 
 function App() {
-
   const [data, setData] = useState<AppData>(() => {
-    return loadStoredAppData() ?? defaultAppData
-  })
+    return loadStoredAppData() ?? defaultAppData;
+  });
 
   useEffect(() => {
-    saveAppData(data)
-  }, [data])
-
+    saveAppData(data);
+  }, [data]);
 
   const printPreview = () => {
-    const originalTitle = document.title
-    const candidateName = data.candidate.name || "Resume"
+    const originalTitle = document.title;
+    const candidateName = data.candidate.name || "Resume";
 
-    document.title = `${candidateName} Resume`
-    window.setTimeout(() => window.print(), 50)
+    document.title = `${candidateName} Resume`;
+    window.setTimeout(() => window.print(), 50);
     window.addEventListener(
       "afterprint",
       () => {
-        document.title = originalTitle
+        document.title = originalTitle;
       },
       { once: true },
-    )
-  }
+    );
+  };
 
   return (
     <main className="flex h-screen flex-col overflow-hidden bg-muted/30 text-foreground">
@@ -67,7 +62,6 @@ function App() {
         <Card className="rounded-none py-3 border-b border-border">
           <CardHeader className="flex justify-between items-center">
             <div className="flex items-center gap-2">
-
               <img src="/logo.svg" alt="Resume Creator" className="size-28 h-auto" />
             </div>
             <div className="flex flex-wrap gap-2">
@@ -112,7 +106,7 @@ function App() {
         </div>
       </section>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;

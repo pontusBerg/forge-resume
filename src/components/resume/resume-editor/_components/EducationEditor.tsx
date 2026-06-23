@@ -1,15 +1,15 @@
-import type { Education } from "@/lib/resume-types"
+import type { Education } from "@/lib/resume-types";
 
-import { FormField } from "@/components/resume/FormField"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { FormField } from "@/components/resume/FormField";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 type EducationEditorProps = {
-  education: Education
-  onChange: (education: Education) => void
-  onRemove: () => void
-}
+  education: Education;
+  onChange: (education: Education) => void;
+  onRemove: () => void;
+};
 
 export function EducationEditor({ education, onChange, onRemove }: EducationEditorProps) {
   const updateField = (
@@ -19,8 +19,8 @@ export function EducationEditor({ education, onChange, onRemove }: EducationEdit
     onChange({
       ...education,
       [field]: value,
-    })
-  }
+    });
+  };
 
   return (
     <section className="grid gap-4">
@@ -79,5 +79,5 @@ export function EducationEditor({ education, onChange, onRemove }: EducationEdit
         />
       </FormField>
     </section>
-  )
+  );
 }

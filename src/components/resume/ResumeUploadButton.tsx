@@ -1,41 +1,40 @@
-import { useRef, useState, type ChangeEvent } from "react"
+import { useRef, useState, type ChangeEvent } from "react";
 
-import { Button } from "@/components/ui/button"
-import { importResumeFile } from "@/lib/resume-import"
-import type { CandidateProfile } from "@/lib/resume-types"
-import { UploadIcon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
-import { toast } from "sonner"
+import { Button } from "@/components/ui/button";
+import { importResumeFile } from "@/lib/resume-import";
+import type { CandidateProfile } from "@/lib/resume-types";
+import { UploadIcon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { toast } from "sonner";
 
 type ResumeUploadButtonProps = {
-  onImport: (candidate: CandidateProfile) => void
-}
+  onImport: (candidate: CandidateProfile) => void;
+};
 
 export function ResumeUploadButton({ onImport }: ResumeUploadButtonProps) {
-  const resumeUploadInputRef = useRef<HTMLInputElement>(null)
-  const [isImportingResume, setIsImportingResume] = useState(false)
+  const resumeUploadInputRef = useRef<HTMLInputElement>(null);
+  const [isImportingResume, setIsImportingResume] = useState(false);
 
   const applyResumeUpload = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
+    const file = event.target.files?.[0];
 
     if (!file) {
-
-      toast.error("No file selected.")
-      return
+      toast.error("No file selected.");
+      return;
     }
 
-    setIsImportingResume(true)
+    setIsImportingResume(true);
 
     try {
-      const candidate = await importResumeFile(file)
-      onImport(candidate)
+      const candidate = await importResumeFile(file);
+      onImport(candidate);
     } catch {
-      toast.error("Failed to import resume")
+      toast.error("Failed to import resume");
     } finally {
-      setIsImportingResume(false)
-      event.target.value = ""
+      setIsImportingResume(false);
+      event.target.value = "";
     }
-  }
+  };
 
   return (
     <>
@@ -56,5 +55,5 @@ export function ResumeUploadButton({ onImport }: ResumeUploadButtonProps) {
         <HugeiconsIcon icon={UploadIcon} />
       </Button>
     </>
-  )
+  );
 }

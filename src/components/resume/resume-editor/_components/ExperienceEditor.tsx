@@ -1,17 +1,17 @@
-import type { Experience } from "@/lib/resume-types"
+import type { Experience } from "@/lib/resume-types";
 
-import { FormField } from "@/components/resume/FormField"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { PlusSignIcon, Trash } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+import { FormField } from "@/components/resume/FormField";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { PlusSignIcon, Trash } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 type ExperienceEditorProps = {
-  experience: Experience
-  onChange: (experience: Experience) => void
-  onRemove: () => void
-}
+  experience: Experience;
+  onChange: (experience: Experience) => void;
+  onRemove: () => void;
+};
 
 export function ExperienceEditor({ experience, onChange, onRemove }: ExperienceEditorProps) {
   const updateField = (
@@ -21,8 +21,8 @@ export function ExperienceEditor({ experience, onChange, onRemove }: ExperienceE
     onChange({
       ...experience,
       [field]: value,
-    })
-  }
+    });
+  };
 
   const updateBullet = (index: number, value: string) => {
     onChange({
@@ -30,8 +30,8 @@ export function ExperienceEditor({ experience, onChange, onRemove }: ExperienceE
       bullets: experience.bullets.map((bullet, bulletIndex) =>
         bulletIndex === index ? value : bullet,
       ),
-    })
-  }
+    });
+  };
 
   return (
     <section className="grid gap-5 py-6">
@@ -113,7 +113,10 @@ export function ExperienceEditor({ experience, onChange, onRemove }: ExperienceE
           </Button>
         </div>
         {experience.bullets.map((bullet, index) => (
-          <div className="grid gap-2 sm:grid-cols-[1fr_auto]" key={`${experience.id}-bullet-${index}`}>
+          <div
+            className="grid gap-2 sm:grid-cols-[1fr_auto]"
+            key={`${experience.id}-bullet-${index}`}
+          >
             <Textarea
               aria-label={`Bullet ${index + 1}`}
               value={bullet}
@@ -136,5 +139,5 @@ export function ExperienceEditor({ experience, onChange, onRemove }: ExperienceE
         ))}
       </div>
     </section>
-  )
+  );
 }
