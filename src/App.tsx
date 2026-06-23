@@ -14,8 +14,33 @@ import { DownloadIcon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import "./App.css"
 
+const defaultAppData: AppData = {
+  candidate: {
+    name: "",
+    email: "",
+    phone: "",
+    headline: "",
+    location: "",
+    photo: {
+      dataUrl: "",
+      include: false,
+    },
+    skillGroups: [],
+    summary: "",
+    includeSummary: true,
+    includeEducation: true,
+    links: [],
+    experience: [],
+    education: [],
+  }
+}
+
 function App() {
-  const [data, setData] = useState<AppData>(loadStoredAppData)
+
+  const [data, setData] = useState<AppData>(() => {
+    return loadStoredAppData() ?? defaultAppData
+  })
+
   useEffect(() => {
     saveAppData(data)
   }, [data])
