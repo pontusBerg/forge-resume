@@ -1,17 +1,17 @@
-import type { AppData } from "@/lib/resume-types"
+import type { AppData } from "@/lib/resume-types";
 
-const STORAGE_KEY = "resume-creator-v2:app-data"
+const STORAGE_KEY = "resume-creator-v2:app-data";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null
+  return typeof value === "object" && value !== null;
 }
 
 function isStoredAppData(value: unknown): value is AppData {
   if (!isRecord(value)) {
-    return false
+    return false;
   }
 
-  return isRecord(value.candidate) && isRecord(value.jobTarget)
+  return isRecord(value.candidate) && isRecord(value.jobTarget);
 }
 
 function normalizeStoredAppData(data: AppData): AppData {
@@ -26,28 +26,28 @@ function normalizeStoredAppData(data: AppData): AppData {
         include: false,
       },
     },
-  }
+  };
 }
 
 export function loadStoredAppData(): AppData | null {
   try {
-    const rawValue = window.localStorage.getItem(STORAGE_KEY)
+    const rawValue = window.localStorage.getItem(STORAGE_KEY);
 
     if (!rawValue) {
-      return null
+      return null;
     }
 
-    const parsedValue = JSON.parse(rawValue)
-    return isStoredAppData(parsedValue) ? normalizeStoredAppData(parsedValue) : null
+    const parsedValue = JSON.parse(rawValue);
+    return isStoredAppData(parsedValue) ? normalizeStoredAppData(parsedValue) : null;
   } catch {
-    return null
+    return null;
   }
 }
 
 export function saveAppData(data: AppData) {
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
 export function clearAppData() {
-  window.localStorage.removeItem(STORAGE_KEY)
+  window.localStorage.removeItem(STORAGE_KEY);
 }

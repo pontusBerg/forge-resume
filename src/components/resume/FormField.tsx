@@ -1,13 +1,13 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/label";
 
 type FormFieldProps = {
-  id: string
-  label: string
-  hint?: string
-  children: ReactNode
-}
+  id: string;
+  label: string;
+  hint?: string;
+  children: ReactNode;
+};
 
 export function FormField({ id, label, hint, children }: FormFieldProps) {
   return (
@@ -16,5 +16,5 @@ export function FormField({ id, label, hint, children }: FormFieldProps) {
       {hint ? <p className="text-sm text-muted-foreground">{hint}</p> : null}
       {children}
     </div>
-  )
+  );
 }

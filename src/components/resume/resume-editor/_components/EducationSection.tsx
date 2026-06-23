@@ -1,20 +1,20 @@
-import type { Education } from "@/lib/resume-types"
+import type { Education } from "@/lib/resume-types";
 
-import { SectionTitle } from "@/components/resume/SectionTitle"
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
+import { SectionTitle } from "@/components/resume/SectionTitle";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
-import { EducationEditor } from "./EducationEditor"
+import { EducationEditor } from "./EducationEditor";
 
 type EducationSectionProps = {
-  education: Education[]
-  includeEducation: boolean
-  onEducationChange: (educationId: string, nextEducation: Education) => void
-  onIncludeEducationChange: (includeEducation: boolean) => void
-  onAddEducation: () => void
-  onRemoveEducation: (educationId: string) => void
-}
+  education: Education[];
+  includeEducation: boolean;
+  onEducationChange: (educationId: string, nextEducation: Education) => void;
+  onIncludeEducationChange: (includeEducation: boolean) => void;
+  onAddEducation: () => void;
+  onRemoveEducation: (educationId: string) => void;
+};
 
 export function EducationSection({
   education,
@@ -48,5 +48,5 @@ export function EducationSection({
         </Button>
       </div>
     </section>
-  )
+  );
 }

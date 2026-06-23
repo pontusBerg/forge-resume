@@ -1,17 +1,17 @@
-import { FormField } from "@/components/resume/FormField"
-import { SectionTitle } from "@/components/resume/SectionTitle"
-import { Input } from "@/components/ui/input"
+import { FormField } from "@/components/resume/FormField";
+import { SectionTitle } from "@/components/resume/SectionTitle";
+import { Input } from "@/components/ui/input";
 
-type CandidateTextField = "name" | "headline" | "email" | "phone" | "location"
+type CandidateTextField = "name" | "headline" | "email" | "phone" | "location";
 
 type ContactSectionProps = {
-  name: string
-  headline: string
-  email: string
-  phone: string
-  location: string
-  onFieldChange: (field: CandidateTextField, value: string) => void
-}
+  name: string;
+  headline: string;
+  email: string;
+  phone: string;
+  location: string;
+  onFieldChange: (field: CandidateTextField, value: string) => void;
+};
 
 export function ContactSection({
   name,
@@ -65,5 +65,5 @@ export function ContactSection({
         </div>
       </div>
     </section>
-  )
+  );
 }

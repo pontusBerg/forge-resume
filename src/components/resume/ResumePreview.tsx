@@ -1,20 +1,25 @@
-import type { CandidateProfile } from "@/lib/resume-types"
-import { FilterResetIcon, ZoomInAreaIcon, ZoomOutAreaIcon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
-import type { ReactNode } from "react"
-import { TransformComponent, TransformWrapper, useControls, useTransformComponent } from "react-zoom-pan-pinch"
+import type { CandidateProfile } from "@/lib/resume-types";
+import { FilterResetIcon, ZoomInAreaIcon, ZoomOutAreaIcon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import type { ReactNode } from "react";
+import {
+  TransformComponent,
+  TransformWrapper,
+  useControls,
+  useTransformComponent,
+} from "react-zoom-pan-pinch";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 type ResumePreviewProps = {
-  candidate: CandidateProfile
-}
+  candidate: CandidateProfile;
+};
 
-const ZOOM_STEP = 0.1
-const MIN_ZOOM = 0.5
-const MAX_ZOOM = 3
+const ZOOM_STEP = 0.1;
+const MIN_ZOOM = 0.5;
+const MAX_ZOOM = 3;
 
 export function ResumePreview({ candidate }: ResumePreviewProps) {
   return (
@@ -40,14 +45,12 @@ export function ResumePreview({ candidate }: ResumePreviewProps) {
         </TransformComponent>
       </TransformWrapper>
     </div>
-  )
+  );
 }
 
 function PreviewZoomControls() {
-  const { zoomIn, zoomOut, resetTransform } = useControls()
-  const zoomPercent = useTransformComponent(({ state }) =>
-    Math.round(state.scale * 100),
-  )
+  const { zoomIn, zoomOut, resetTransform } = useControls();
+  const zoomPercent = useTransformComponent(({ state }) => Math.round(state.scale * 100));
 
   return (
     <div className="no-print pointer-events-none absolute inset-x-0 top-0 z-10 flex justify-end p-2">
@@ -84,11 +87,11 @@ function PreviewZoomControls() {
         </Button>
       </div>
     </div>
-  )
+  );
 }
 
 function ResumeDocument({ candidate }: { candidate: CandidateProfile }) {
-  const hasPhoto = candidate.photo.include && candidate.photo.dataUrl
+  const hasPhoto = candidate.photo.include && candidate.photo.dataUrl;
   const contactItems = [
     { id: "email", label: "Email", value: candidate.email },
     { id: "phone", label: "Phone", value: candidate.phone },
@@ -100,7 +103,7 @@ function ResumeDocument({ candidate }: { candidate: CandidateProfile }) {
         label: link.label,
         value: link.url,
       })),
-  ].filter((item) => item.value)
+  ].filter((item) => item.value);
 
   return (
     <Card className="printable resume-print resume-document mx-auto w-full max-w-3xl overflow-visible">
@@ -194,7 +197,9 @@ function ResumeDocument({ candidate }: { candidate: CandidateProfile }) {
                     <div className="flex flex-wrap justify-between gap-2">
                       <div>
                         <h4 className="font-sans text-sm font-bold">{education.school}</h4>
-                        <p className="text-xs font-medium text-muted-foreground">{education.degree}</p>
+                        <p className="text-xs font-medium text-muted-foreground">
+                          {education.degree}
+                        </p>
                       </div>
                       <p className="text-xs font-medium text-muted-foreground">
                         {[education.startDate, education.endDate].filter(Boolean).join(" - ")}
@@ -230,13 +235,13 @@ function ResumeDocument({ candidate }: { candidate: CandidateProfile }) {
         </ResumeSection>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 type ResumeSectionProps = {
-  title: string
-  children: ReactNode
-}
+  title: string;
+  children: ReactNode;
+};
 
 function ResumeSection({ title, children }: ResumeSectionProps) {
   return (
@@ -249,5 +254,5 @@ function ResumeSection({ title, children }: ResumeSectionProps) {
       </div>
       {children}
     </section>
-  )
+  );
 }
