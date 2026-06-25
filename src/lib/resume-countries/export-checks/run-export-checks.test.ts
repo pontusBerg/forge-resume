@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
+import { getFailedExportChecks, runExportChecks } from "@/lib/resume-countries/export-checks/run-export-checks";
 import { sampleCandidate } from "@/lib/sample-data";
-import { getFailedExportChecks, runExportChecks } from "@/lib/resume-export-checks/run-export-checks";
 import type { CandidateProfile } from "@/lib/resume-types";
 
 const emptyCandidate: CandidateProfile = {

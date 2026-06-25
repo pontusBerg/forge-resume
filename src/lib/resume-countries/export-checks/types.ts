@@ -1,4 +1,4 @@
-import type { SupportedResumeCountry } from "@/lib/resume-countries";
+import type { SupportedResumeCountry } from "@/lib/resume-countries/types";
 import type { CandidateProfile } from "@/lib/resume-types";
 
 export type ExportCheckSection =

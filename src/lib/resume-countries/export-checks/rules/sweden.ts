@@ -1,4 +1,4 @@
-import type { ExportCheckRule } from "@/lib/resume-export-checks/types";
+import type { ExportCheckRule } from "@/lib/resume-countries/export-checks/types";
 
 export const swedenExportCheckRules: ExportCheckRule[] = [
   {

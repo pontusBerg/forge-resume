@@ -1,11 +1,17 @@
-import type { SupportedResumeCountry } from "@/lib/resume-countries";
+import type { CountryDisplay, CountryGuidance, SupportedResumeCountry } from "@/lib/resume-countries/types";
 
-export type CountryGuidance = {
-  title: string;
-  tips: string[];
+export const countryDisplay: Record<SupportedResumeCountry, CountryDisplay> = {
+  sweden: {
+    flag: "🇸🇪",
+    subtitle: "Local conventions for the Swedish job market",
+  },
+  austria: {
+    flag: "🇦🇹",
+    subtitle: "Local conventions for the Austrian job market",
+  },
 };
 
-export const resumeCountryGuidance: Partial<Record<SupportedResumeCountry, CountryGuidance>> = {
+export const resumeCountryGuidance: Record<SupportedResumeCountry, CountryGuidance> = {
   sweden: {
     title: "Swedish resume tips",
     tips: [

@@ -9,7 +9,7 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import type { ExportCheckResult } from "@/lib/resume-export-checks/types";
+import type { ExportCheckResult } from "@/lib/resume-countries";
 import { Alert02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
