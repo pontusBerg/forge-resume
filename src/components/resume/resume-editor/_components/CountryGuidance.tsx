@@ -1,8 +1,22 @@
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import type { SupportedResumeCountry } from "@/lib/resume-countries";
 import { resumeCountryGuidance } from "@/lib/resume-country-guidance";
-import { InformationCircleIcon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
+
+const countryDisplay: Record<SupportedResumeCountry, { flag: string; subtitle: string }> = {
+  sweden: {
+    flag: "🇸🇪",
+    subtitle: "Local conventions for the Swedish job market",
+  },
+  austria: {
+    flag: "🇦🇹",
+    subtitle: "Local conventions for the Austrian job market",
+  },
+};
 
 type CountryGuidanceProps = {
   country: SupportedResumeCountry;
@@ -15,17 +29,45 @@ export function CountryGuidance({ country }: CountryGuidanceProps) {
     return null;
   }
 
+  const meta = countryDisplay[country];
+
   return (
-    <Alert className="border-primary/15 bg-primary/5">
-      <HugeiconsIcon icon={InformationCircleIcon} strokeWidth={2} />
-      <AlertTitle>{guidance.title}</AlertTitle>
-      <AlertDescription>
-        <ul className="mt-2 list-disc space-y-1.5 pl-4 marker:text-primary/60">
-          {guidance.tips.map((tip) => (
-            <li key={tip}>{tip}</li>
-          ))}
-        </ul>
-      </AlertDescription>
-    </Alert>
+    <Accordion
+      defaultValue={["tips"]}
+      className="overflow-hidden rounded-xl border border-border/80 bg-muted/30 shadow-xs"
+    >
+      <AccordionItem value="tips" className="border-0">
+        <AccordionTrigger className="gap-3.5 border border-transparent px-4 py-3.5 font-normal hover:bg-muted/50 hover:no-underline group-aria-expanded/accordion-trigger:border-border/60 group-aria-expanded/accordion-trigger:bg-muted/40">
+          <div className="flex min-w-0 flex-1 items-start gap-3.5">
+            <div
+              aria-hidden
+              className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border/70 bg-background/80 text-xl leading-none"
+            >
+              {meta.flag}
+            </div>
+            <div className="min-w-0 flex-1 pt-0.5 text-left">
+              <p className="font-heading text-sm font-semibold tracking-tight">{guidance.title}</p>
+              <p className="mt-0.5 text-xs font-normal leading-relaxed text-muted-foreground">
+                {meta.subtitle}
+              </p>
+            </div>
+          </div>
+        </AccordionTrigger>
+        <AccordionContent className="px-4 pb-4">
+          <div className="rounded-lg border border-border/70 bg-background/70 p-3.5">
+            <ol className="grid gap-3">
+              {guidance.tips.map((tip, index) => (
+                <li key={tip} className="flex gap-3 text-[13px] leading-relaxed">
+                  <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border border-border/60 bg-muted/60 text-[11px] font-medium tabular-nums text-muted-foreground">
+                    {index + 1}
+                  </span>
+                  <span className="text-foreground/90">{tip}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 }

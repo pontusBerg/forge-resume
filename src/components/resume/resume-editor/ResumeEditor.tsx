@@ -9,17 +9,15 @@ import type {
 import { Card, CardContent } from "@/components/ui/card";
 
 import { ContactSection } from "./_components/ContactSection";
-import { CountryGuidance } from "./_components/CountryGuidance";
 import { EducationSection } from "./_components/EducationSection";
 import { ExperienceSection } from "./_components/ExperienceSection";
 import { LinksSection } from "./_components/LinksSection";
 import { ProfileImageSection } from "./_components/ProfileImageSection";
 import { SkillsSection } from "./_components/SkillsSection";
 import { SummarySection } from "./_components/SummarySection";
+import { TargetCountrySection } from "./_components/TargetCountrySection";
 import { makeId } from "./_components/utils";
 import type { SupportedResumeCountry } from "@/lib/resume-countries";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 type ResumeEditorProps = {
   candidate: CandidateProfile;
@@ -187,26 +185,10 @@ export function ResumeEditor({ candidate, onChange, onCountryChange, selectedCou
   return (
     <Card className="min-h-full max-w-2xl overflow-visible rounded-none border-0 border-r border-border shadow-none ring-0">
       <CardContent className="grid gap-10 px-6 py-8">
-        <section className="grid gap-4">
-          <div className="grid gap-2">
-            <p className="text-sm font-medium">Target country</p>
-            <RadioGroup
-              value={selectedCountry}
-              onValueChange={(value) => onCountryChange(value as SupportedResumeCountry)}
-              className="flex gap-4"
-            >
-              <Label className="flex items-center gap-2 text-sm font-normal">
-                <RadioGroupItem value="sweden" />
-                Sweden
-              </Label>
-              <Label className="flex items-center gap-2 text-sm font-normal">
-                <RadioGroupItem value="austria" />
-                Austria
-              </Label>
-            </RadioGroup>
-          </div>
-          <CountryGuidance country={selectedCountry} />
-        </section>
+        <TargetCountrySection
+          selectedCountry={selectedCountry}
+          onCountryChange={onCountryChange}
+        />
         <ContactSection
           name={candidate.name}
           headline={candidate.headline}
