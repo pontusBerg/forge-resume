@@ -52,14 +52,17 @@ export type CandidateProfile = {
   skillGroups: SkillGroup[];
 };
 
-export type JobTarget = {
-  company: string;
-  role: string;
-  location: string;
-  hiringManager: string;
-  description: string;
+export type CoverLetter = {
+  recipientName: string;
+  recipientCompany: string;
+  recipientLocation: string;
+  date: string;
+  salutation: string;
+  signOff: string;
+  bodyState: string;
 };
 
 export type AppData = {
   candidate: CandidateProfile;
+  coverLetter: CoverLetter;
 };

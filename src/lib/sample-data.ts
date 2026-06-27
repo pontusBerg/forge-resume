@@ -1,4 +1,5 @@
 import type { AppData, CandidateProfile } from "@/lib/resume-types";
+import { createEmptyCoverLetter } from "@/lib/cover-letter-defaults";
 
 export const sampleCandidate: CandidateProfile = {
   name: "Jordan Lee",
@@ -88,6 +89,7 @@ export const sampleCandidate: CandidateProfile = {
 
 export const sampleAppData: AppData = {
   candidate: sampleCandidate,
+  coverLetter: createEmptyCoverLetter(),
 };
 
 export function createEmptyAppData(): AppData {
@@ -110,5 +112,6 @@ export function createEmptyAppData(): AppData {
       education: [],
       skillGroups: [],
     },
+    coverLetter: createEmptyCoverLetter(),
   };
 }
