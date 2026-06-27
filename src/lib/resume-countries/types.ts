@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export type SupportedResumeCountry = "sweden" | "austria";
 
 export const supportedResumeCountries: SupportedResumeCountry[] = ["sweden", "austria"];
@@ -8,6 +10,6 @@ export type CountryGuidance = {
 };
 
 export type CountryDisplay = {
-  flag: string;
+  flag: ReactNode;
   subtitle: string;
 };

@@ -52,7 +52,7 @@ function App() {
     const candidateName = data.candidate.name || "Resume";
 
     document.title = `${candidateName} Resume`;
-    window.setTimeout(() => window.print(), 50);
+    window.setTimeout(() => window.print(), 250);
     window.addEventListener(
       "afterprint",
       () => {

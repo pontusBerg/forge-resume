@@ -18,14 +18,14 @@ export function CountryGuidance({ country }: CountryGuidanceProps) {
   return (
     <Accordion
       defaultValue={["tips"]}
-      className="overflow-hidden rounded-xl border border-border/80 bg-muted/30 "
+      className="overflow-hidden rounded-xl border border-border/80  "
     >
       <AccordionItem value="tips" className="border-0">
         <AccordionTrigger className="gap-3.5 border border-transparent px-4 py-3.5 font-normal hover:bg-muted/50 hover:no-underline group-aria-expanded/accordion-trigger:border-border/60 group-aria-expanded/accordion-trigger:bg-muted/40">
           <div className="flex min-w-0 flex-1 items-start gap-3.5">
             <div
               aria-hidden
-              className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border/70 bg-background/80 text-xl leading-none"
+              className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border/70 text-xl leading-none"
             >
               {meta.flag}
             </div>
@@ -38,7 +38,7 @@ export function CountryGuidance({ country }: CountryGuidanceProps) {
           </div>
         </AccordionTrigger>
         <AccordionContent className="px-4 pb-4">
-          <div className="rounded-lg border border-border/70 bg-background/70 p-3.5">
+          <div className="rounded-lg">
             <ol className="grid gap-3">
               {guidance.tips.map((tip, index) => (
                 <li key={tip} className="flex gap-3 text-[13px] leading-relaxed">

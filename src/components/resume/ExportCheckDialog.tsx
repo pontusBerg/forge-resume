@@ -33,7 +33,7 @@ export function ExportCheckDialog({
 
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
-      <AlertDialogContent>
+      <AlertDialogContent className={"data-closed:duration-0"}>
         <AlertDialogHeader>
           <AlertDialogMedia className="mb-0 rounded-lg border border-border bg-muted/60 text-amber-600 dark:text-amber-500">
             <HugeiconsIcon icon={Alert02Icon} strokeWidth={2} className="size-7" />
