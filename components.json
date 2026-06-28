@@ -14,12 +14,15 @@
   "rtl": false,
   "aliases": {
     "components": "@/components",
-    "utils": "@/src/lib/utils",
-    "ui": "@/src/components/ui",
-    "lib": "@/src/lib",
-    "hooks": "@/src/hooks"
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "plate-ui": "@/components/plate-ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
   },
   "menuColor": "default",
   "menuAccent": "bold",
-  "registries": {}
+  "registries": {
+    "@plate": "https://platejs.org/r/{name}.json"
+  }
 }
