@@ -1,20 +1,18 @@
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { AppDataProvider } from "@/context/AppDataContext";
-import { CoverLetterPage } from "@/pages/CoverLetterPage";
-import { ResumePage } from "@/pages/ResumePage";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { appRoutes } from "@/routes";
 
 import "./App.css";
+
+const router = createBrowserRouter(appRoutes);
 
 function App() {
   return (
     <TooltipProvider>
       <AppDataProvider>
-        <Routes>
-          <Route path="/" element={<ResumePage />} />
-          <Route path="/cover-letter" element={<CoverLetterPage />} />
-        </Routes>
+        <RouterProvider router={router} />
       </AppDataProvider>
     </TooltipProvider>
   );

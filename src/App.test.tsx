@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import App from "@/App";
+import { AppDataProvider } from "@/context/AppDataContext";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { appRoutes } from "@/routes";
 
 vi.mock("@/lib/storage", () => ({
   loadStoredAppData: vi.fn(() => null),
@@ -11,10 +13,14 @@ vi.mock("@/lib/storage", () => ({
 }));
 
 function renderApp(initialRoute = "/") {
+  const router = createMemoryRouter(appRoutes, { initialEntries: [initialRoute] });
+
   return render(
-    <MemoryRouter initialEntries={[initialRoute]}>
-      <App />
-    </MemoryRouter>,
+    <TooltipProvider>
+      <AppDataProvider>
+        <RouterProvider router={router} />
+      </AppDataProvider>
+    </TooltipProvider>,
   );
 }
 

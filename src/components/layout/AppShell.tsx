@@ -38,10 +38,10 @@ export function AppShell({ children, onPrint }: AppShellProps) {
                 <img src="/logo.svg" alt="Resume Creator" className="size-28 h-auto shrink-0" />
               </NavLink>
               <nav className="flex items-center gap-1 rounded-lg border border-border bg-muted/50 p-1">
-                <NavLink to="/" className={navLinkClass} end>
+                <NavLink to="/" className={navLinkClass} end viewTransition>
                   Resume
                 </NavLink>
-                <NavLink to="/cover-letter" className={navLinkClass}>
+                <NavLink to="/cover-letter" className={navLinkClass} viewTransition>
                   Cover Letter
                 </NavLink>
               </nav>
