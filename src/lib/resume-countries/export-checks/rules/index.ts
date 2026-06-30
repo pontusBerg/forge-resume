@@ -6,4 +6,5 @@ import type { SupportedResumeCountry } from "@/lib/resume-countries/types";
 export const exportCheckRulesByCountry: Record<SupportedResumeCountry, ExportCheckRule[]> = {
   austria: austriaExportCheckRules,
   sweden: swedenExportCheckRules,
+  none: [],
 };
