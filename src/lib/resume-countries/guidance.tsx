@@ -72,10 +72,7 @@ export const resumeCountryGuidance: Record<SupportedResumeCountry, CountryGuidan
     tips: [
       "A professional photo is standard.",
       "Include full name, address, phone, email, date of birth, and nationality. Marital status is optional.",
-      "Sign and date the CV at the bottom",
       "Include a Summary. Rather than stating what you want, focus on what you can offer and how your background aligns with the position.",
-      "The cover letter is considered more important than the CV. Write it in German and personalize it per application.",
-      "Academic and professional titles carry significant weight — include them in the CV and use them in correspondence.",
     ],
   },
   none: {

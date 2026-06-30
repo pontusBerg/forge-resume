@@ -21,8 +21,8 @@ export function CountryGuidance({ country }: CountryGuidanceProps) {
       className="overflow-hidden rounded-xl border border-border/80  "
     >
       <AccordionItem value="tips" className="border-0">
-        <AccordionTrigger className="gap-3.5 border border-transparent px-4 py-3.5 font-normal hover:bg-muted/50 hover:no-underline group-aria-expanded/accordion-trigger:border-border/60 group-aria-expanded/accordion-trigger:bg-muted/40">
-          <div className="flex min-w-0 flex-1 items-start gap-3.5">
+        <AccordionTrigger className="gap-3.5  border border-transparent px-4 py-3.5 font-normal hover:bg-muted/50 hover:no-underline group-aria-expanded/accordion-trigger:border-border/60 group-aria-expanded/accordion-trigger:bg-muted/40">
+          <div className="flex min-w-0 flex-1 items-center gap-2">
             <div
               aria-hidden
               className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border/70 text-xl leading-none"
@@ -31,9 +31,6 @@ export function CountryGuidance({ country }: CountryGuidanceProps) {
             </div>
             <div className="min-w-0 flex-1 pt-0.5 text-left">
               <p className="font-heading text-sm font-semibold">{guidance.title}</p>
-              <p className="mt-0.5 text-xs font-normal leading-relaxed text-muted-foreground">
-                {meta.subtitle}
-              </p>
             </div>
           </div>
         </AccordionTrigger>
