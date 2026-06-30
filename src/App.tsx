@@ -39,7 +39,7 @@ function App() {
   const [data, setData] = useState<AppData>(() => {
     return loadStoredAppData() ?? defaultAppData;
   });
-  const [selectedCountry, setSelectedCountry] = useState<SupportedResumeCountry>("sweden");
+  const [selectedCountry, setSelectedCountry] = useState<SupportedResumeCountry>("none");
   const [exportDialogOpen, setExportDialogOpen] = useState(false);
   const [exportFailures, setExportFailures] = useState<ExportCheckResult[]>([]);
 

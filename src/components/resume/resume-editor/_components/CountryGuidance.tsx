@@ -37,12 +37,12 @@ export function CountryGuidance({ country }: CountryGuidanceProps) {
             </div>
           </div>
         </AccordionTrigger>
-        <AccordionContent className="px-4 pb-4">
-          <div className="rounded-lg">
+        <AccordionContent className="px-4 pb-4 pt-4">
+          <div className="rounded-xs">
             <ol className="grid gap-3">
               {guidance.tips.map((tip, index) => (
                 <li key={tip} className="flex gap-3 text-[13px] leading-relaxed">
-                  <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border border-border/60 bg-muted/60 text-[11px] font-medium tabular-nums text-muted-foreground">
+                  <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border border-border/60 bg-muted/60 text-[11px] font-semibold tabular-nums text-muted-foreground">
                     {index + 1}
                   </span>
                   <span className="text-foreground/90">{tip}</span>
