@@ -4,9 +4,10 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import App from "@/App";
 import { sampleAppData } from "@/lib/sample-data";
+import { loadStoredAppData } from "@/lib/storage";
 
 vi.mock("@/lib/storage", () => ({
-  loadStoredAppData: vi.fn(() => null),
+  loadStoredAppData: vi.fn(),
   saveAppData: vi.fn(),
 }));
 
@@ -23,6 +24,7 @@ function getResumePreview() {
 describe("App", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.mocked(loadStoredAppData).mockReturnValue(sampleAppData);
   });
 
   it('hides the summary section on the resume when "Show summary on resume" is unchecked', async () => {
