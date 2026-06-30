@@ -1,4 +1,8 @@
-import type { CountryDisplay, CountryGuidance, SupportedResumeCountry } from "@/lib/resume-countries/types";
+import type {
+  CountryDisplay,
+  CountryGuidance,
+  SupportedResumeCountry,
+} from "@/lib/resume-countries/types";
 
 export const countryDisplay: Record<SupportedResumeCountry, CountryDisplay> = {
   sweden: {
@@ -54,7 +58,7 @@ export const countryDisplay: Record<SupportedResumeCountry, CountryDisplay> = {
   none: {
     flag: null,
     subtitle: "No country selected",
-  }
+  },
 };
 
 export const resumeCountryGuidance: Record<SupportedResumeCountry, CountryGuidance> = {
@@ -78,5 +82,5 @@ export const resumeCountryGuidance: Record<SupportedResumeCountry, CountryGuidan
   none: {
     title: "No country selected",
     tips: [],
-  }
+  },
 };

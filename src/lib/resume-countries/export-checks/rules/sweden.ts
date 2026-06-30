@@ -12,8 +12,7 @@ export const swedenExportCheckRules: ExportCheckRule[] = [
     id: "sweden.summary.present",
     section: "summary",
     message: "Use a short 2–3 line professional summary focused on concrete facts.",
-    check: ({ candidate }) =>
-      !candidate.includeSummary || Boolean(candidate.summary.trim()),
+    check: ({ candidate }) => !candidate.includeSummary || Boolean(candidate.summary.trim()),
   },
   {
     id: "sweden.experience.present",

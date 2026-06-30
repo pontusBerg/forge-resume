@@ -41,7 +41,10 @@ function CountryFlag({ country }: { country: SupportedResumeCountry }) {
   );
 }
 
-export function TargetCountrySection({ selectedCountry, onCountryChange }: TargetCountrySectionProps) {
+export function TargetCountrySection({
+  selectedCountry,
+  onCountryChange,
+}: TargetCountrySectionProps) {
   return (
     <section className="grid gap-4">
       <div className="grid gap-2.5">
@@ -52,7 +55,6 @@ export function TargetCountrySection({ selectedCountry, onCountryChange }: Targe
           className="flex flex-wrap gap-2"
         >
           {supportedResumeCountries.map((country) => {
-
             return (
               <Label
                 key={country}
@@ -63,7 +65,6 @@ export function TargetCountrySection({ selectedCountry, onCountryChange }: Targe
                   "dark:has-data-checked:border-primary/30 dark:has-data-checked:bg-primary/10",
                 )}
               >
-
                 <RadioGroupItem value={country} className="sr-only hidden" />
                 <div
                   aria-hidden
@@ -74,18 +75,18 @@ export function TargetCountrySection({ selectedCountry, onCountryChange }: Targe
                   <CountryFlag country={country} />
                 </div>
                 <div className="min-w-0 flex-1 pt-0.5">
-                  <p className="font-heading text-sm  text-accent font-semibold leading-none">{formatCountryLabel(country)}</p>
+                  <p className="font-heading text-sm  text-accent font-semibold leading-none">
+                    {formatCountryLabel(country)}
+                  </p>
                 </div>
               </Label>
             );
           })}
         </RadioGroup>
       </div>
-      {
-        selectedCountry !== "none" && (
-          <CountryGuidance key={selectedCountry} country={selectedCountry} />
-        )
-      }
+      {selectedCountry !== "none" && (
+        <CountryGuidance key={selectedCountry} country={selectedCountry} />
+      )}
     </section>
   );
 }

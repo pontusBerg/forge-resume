@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { getFailedExportChecks, runExportChecks } from "@/lib/resume-countries/export-checks/run-export-checks";
+import {
+  getFailedExportChecks,
+  runExportChecks,
+} from "@/lib/resume-countries/export-checks/run-export-checks";
 import { sampleCandidate } from "@/lib/sample-data";
 import type { CandidateProfile } from "@/lib/resume-types";
 
