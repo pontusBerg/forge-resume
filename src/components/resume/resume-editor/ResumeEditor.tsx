@@ -15,16 +15,25 @@ import { LinksSection } from "./_components/LinksSection";
 import { ProfileImageSection } from "./_components/ProfileImageSection";
 import { SkillsSection } from "./_components/SkillsSection";
 import { SummarySection } from "./_components/SummarySection";
+import { TargetCountrySection } from "./_components/TargetCountrySection";
 import { makeId } from "./_components/utils";
+import type { SupportedResumeCountry } from "@/lib/resume-countries";
 
 type ResumeEditorProps = {
   candidate: CandidateProfile;
   onChange: (candidate: CandidateProfile) => void;
+  selectedCountry: SupportedResumeCountry;
+  onCountryChange: (country: SupportedResumeCountry) => void;
 };
 
 type CandidateTextField = "name" | "headline" | "email" | "phone" | "location" | "summary";
 
-export function ResumeEditor({ candidate, onChange }: ResumeEditorProps) {
+export function ResumeEditor({
+  candidate,
+  onChange,
+  onCountryChange,
+  selectedCountry,
+}: ResumeEditorProps) {
   const updateField = (field: CandidateTextField, value: string) => {
     onChange({
       ...candidate,
@@ -181,6 +190,7 @@ export function ResumeEditor({ candidate, onChange }: ResumeEditorProps) {
   return (
     <Card className="min-h-full max-w-2xl overflow-visible rounded-none border-0 border-r border-border shadow-none ring-0">
       <CardContent className="grid gap-10 px-6 py-8">
+        <TargetCountrySection selectedCountry={selectedCountry} onCountryChange={onCountryChange} />
         <ContactSection
           name={candidate.name}
           headline={candidate.headline}

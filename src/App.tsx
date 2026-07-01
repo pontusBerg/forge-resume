@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 
+import { ExportCheckDialog } from "@/components/resume/ExportCheckDialog";
 import { ResumeEditor } from "@/components/resume/resume-editor/ResumeEditor";
 import { ResumePreview } from "@/components/resume/ResumePreview";
 import { ResumeUploadButton } from "@/components/resume/ResumeUploadButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
+import type { SupportedResumeCountry } from "@/lib/resume-countries";
+import { getFailedExportChecks, type ExportCheckResult } from "@/lib/resume-countries";
 import type { AppData } from "@/lib/resume-types";
 import { loadStoredAppData, saveAppData } from "@/lib/storage";
 import { DownloadIcon } from "@hugeicons/core-free-icons";
@@ -36,6 +39,9 @@ function App() {
   const [data, setData] = useState<AppData>(() => {
     return loadStoredAppData() ?? defaultAppData;
   });
+  const [selectedCountry, setSelectedCountry] = useState<SupportedResumeCountry>("none");
+  const [exportDialogOpen, setExportDialogOpen] = useState(false);
+  const [exportFailures, setExportFailures] = useState<ExportCheckResult[]>([]);
 
   useEffect(() => {
     saveAppData(data);
@@ -46,7 +52,7 @@ function App() {
     const candidateName = data.candidate.name || "Resume";
 
     document.title = `${candidateName} Resume`;
-    window.setTimeout(() => window.print(), 50);
+    window.setTimeout(() => window.print(), 250);
     window.addEventListener(
       "afterprint",
       () => {
@@ -54,6 +60,21 @@ function App() {
       },
       { once: true },
     );
+  };
+
+  const handlePrintClick = () => {
+    const failures = getFailedExportChecks({
+      candidate: data.candidate,
+      country: selectedCountry,
+    });
+
+    if (failures.length === 0) {
+      printPreview();
+      return;
+    }
+
+    setExportFailures(failures);
+    setExportDialogOpen(true);
   };
 
   return (
@@ -76,7 +97,7 @@ function App() {
                   }))
                 }
               />
-              <Button type="button" variant="default" onClick={printPreview}>
+              <Button type="button" variant="default" onClick={handlePrintClick}>
                 Print resume
                 <HugeiconsIcon icon={DownloadIcon} />
               </Button>
@@ -96,6 +117,8 @@ function App() {
                   candidate,
                 }))
               }
+              selectedCountry={selectedCountry}
+              onCountryChange={setSelectedCountry}
             />
           </div>
           <aside className="flex min-h-0 min-w-0 flex-1 flex-col gap-3 overflow-hidden">
@@ -105,6 +128,13 @@ function App() {
           </aside>
         </div>
       </section>
+
+      <ExportCheckDialog
+        open={exportDialogOpen}
+        onOpenChange={setExportDialogOpen}
+        failures={exportFailures}
+        onProceed={printPreview}
+      />
     </main>
   );
 }
